@@ -1,14 +1,15 @@
 package Models;
 
 public class User {
+	private static int lastId = 0;
 	private int Id;
 	private String Name;
 	private String Email;
 	private String Password;
 	private String Role;
 	
-	public User (int Id, String Name,String Email, String Password, String Role) {
-		this.Id = Id;
+	public User ( String Name,String Email, String Password, String Role) {
+		this.Id = ++lastId;
 		this.Name = Name;
 		this.Email = Email;
 		this.Password = Password;
@@ -18,9 +19,9 @@ public class User {
 	        return Id;
 	    }
 
-	    public void setId(int Id) {
-	        this.Id = Id;
-	    }
+//	    public void setId(int Id) {
+//	        this.Id = Id;
+//	    }
 
 	    public String getName() {
 	        return Name;
@@ -53,4 +54,12 @@ public class User {
 	    public void setRole(String Role) {
 	        this.Role = Role;
 	    }
+	    
+	    
+	    @Override
+	    public String toString() {
+	    	return "User [ID="+ Id + ",Name = " + Name+ ",Email="+ Email +",Password ="+ Password +", Role ="+ Role +"]";
+	    }
+	    
+	  
 }

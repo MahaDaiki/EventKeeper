@@ -54,5 +54,14 @@ public class ReservationService implements ReservationManagement {
 		.filer(res->getEventId() == EventId)
 		.forEach(res ->system.out.println ("Reservation ID: " + res.getReservationId() + ", User ID: " + res.getUserId())));
 	}
+	
+   
+	
+	private Reservation getReservationById(int reservationId) {
+        return reservations.stream()
+            .filter(res -> res.getReservationId() == reservationId)
+            .findFirst()
+            .orElse(null);
+    }
 
 }

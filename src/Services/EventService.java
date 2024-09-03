@@ -8,6 +8,7 @@ import Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class EventService implements EventManagement {
@@ -83,5 +84,16 @@ public class EventService implements EventManagement {
 				.orElse(null);
 		
 	}
+
+	@Override
+	public List<Events> searchEvents(String date, String place, String type) {
+	    return events.stream()
+                .filter(event -> (date == null || event.getDate().equals(date)) &&
+                                 (place == null || event.getPlace().equals(place)) &&
+                                 (type == null || event.getType().equals(type)))
+                .collect(Collectors.toList());
+	}
+	
+
 
 }

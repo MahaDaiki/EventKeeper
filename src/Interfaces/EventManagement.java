@@ -1,5 +1,6 @@
 package Interfaces;
 import Models.User;
+import java.util.List;
 import Models.Events;
 
 public interface EventManagement {
@@ -8,5 +9,7 @@ public interface EventManagement {
     void deleteEvent(int eventId, User requester);
     void listEvents(User requester);
     Events getEventById(int eventId);
+    
+    List<Events> searchEvents(String date, String place, String type);
 	
 }

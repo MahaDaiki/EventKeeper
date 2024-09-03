@@ -1,11 +1,12 @@
 package Interfaces;
-
+import Models.User;
 import Models.Events;
 
 public interface EventManagement {
-	void AddEvent(Events event);
-	void ModifyEvent(Events event);
-	void DeleteEvent(Events event);
-	void ShowEvents();
+    void addEvent(Events event, User requester);
+    void modifyEvent(Events event, User requester);
+    void deleteEvent(int eventId, User requester);
+    void listEvents(User requester);
+    Events getEventById(int eventId);
 	
 }

@@ -7,6 +7,10 @@ import Models.RegularUser;
 //import Services.EventService;
 import Services.UserService;
 
+import Main.UserMain;
+import Main.AdminMain;
+
+
 import java.util.Scanner;
 
 public class Main {
@@ -63,13 +67,11 @@ public class Main {
 
 	        RegularUser user = new RegularUser(name, email, password);
 	        userService.addUser(user, user);
-	        RegularUserMenu(user);
+	        UserMain.RegularUserMenu(user);
 		
 	}
 	
-	public static void RegularUserMenu(RegularUser user) {
-		System.out.println("Hello " + user.getName() + " Welcome !!");
-	}
+	
 	
 	public static void Admin() {
 		String AdminName = "Admin" ;
@@ -79,11 +81,9 @@ public class Main {
 		Admin admin = new Admin(AdminName, AdminEmail, AdminPassword);
 		
 		
-		AdminMenu(admin);	
+		AdminMain.AdminMenu(admin);	
 	}
 	
-	public static void AdminMenu(Admin admin) {
-		System.out.println("Welcome " + admin.getName() + " !" );
-	}
+	
 	
 }

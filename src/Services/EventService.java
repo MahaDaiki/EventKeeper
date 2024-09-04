@@ -29,23 +29,30 @@ public class EventService implements EventManagement {
 
 	@Override
 	public void modifyEvent(Events event, User requester) {
-		if ( requester instanceof Admin) {
-			Events ExistingEvent = getEventById(event.getId());
-			if ( ExistingEvent != null) {
-				ExistingEvent.setDate(event.getDate());
-				ExistingEvent.setPlace(event.getPlace());
-				ExistingEvent.setType(event.getType());
-				System.out.println("Event Modified Succefully!");
-			}
-			else {
-				throw new IllegalArgumentException("Event Not Found");
-			}
-		}
-		else {
-			throw new SecurityException("Only admins can modify events!");
-		}
-		
+	    if (requester instanceof Admin) {
+	        Events existingEvent = getEventById(event.getId()); 
+        	System.out.println(event);
+
+	        if (true) {
+	          
+	        	
+	            existingEvent.setDate(event.getDate());
+	            existingEvent.setPlace(event.getPlace());
+	            existingEvent.setType(event.getType());
+	            System.out.println(event);
+	            System.out.println(");
+	            System.out.println("Event Modified Successfully!");
+	        }
+//	        else {
+//	        	System.out.println("dd");
+//
+//	            throw new IllegalArgumentException("Event Not Found");
+//	        }
+	    } else {
+	        throw new SecurityException("Only admins can modify events!");
+	    }
 	}
+
 
 	@Override
 	public void deleteEvent(int eventId, User requester) {
@@ -78,15 +85,15 @@ public class EventService implements EventManagement {
 
 	@Override
 	public Events getEventById(int eventId) {
-		 for (int i = 0; i < events.size(); i++) {
-		        Events event = events.get(i);
-		        if (event.getId() == eventId) {
-		            return event;
-		        }
-		    }
-		    return null;
-		
+	    for (int i = 0; i < events.size(); i++) {
+	        Events event = events.get(i);
+	        if (event.getId() == eventId) {
+	            return event;
+	        }
+	    }
+	    return null;
 	}
+
 
 	@Override
 	public List<Events> searchEvents(String date, String place, String type) {

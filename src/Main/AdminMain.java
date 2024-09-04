@@ -3,6 +3,7 @@ package Main;
 import Models.Admin;
 import Models.User;
 import Services.UserService;
+import Services.AdminService;
 
 import Main.Main;
 
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class AdminMain {
 	
 	private static UserService userservice = new UserService();
+	private static AdminService adminservices = new AdminService(null, null, null);
 	private static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -36,7 +38,7 @@ public class AdminMain {
 	            	ManageUsersMenu(admin);
 	            	break;
 	            case 2 :
-	            	EventMain.ManageEventsMenu(admin);
+	            	EventMain.manageEventsMenu(admin);
 	            	break;
 	            case 3 :
 	            	  ViewReports(admin);
@@ -52,6 +54,7 @@ public class AdminMain {
 	}
 	private static void ManageUsersMenu(Admin admin) {
         while (true) {
+        	userservice.listUsers(admin);
             System.out.println("Manage Users:");
             System.out.println("1. Add User");
             System.out.println("2. Modify User");
@@ -91,12 +94,14 @@ public class AdminMain {
 	        System.out.print("Enter user password: ");
 	        String password = scanner.nextLine();
 
-	        User user = new User(name, email, password);
+	        User user = new User(name, email, password , "RegularUser");
+	      
 	        userservice.addUser(user, admin);
 	    }
 
 	    private static void modifyUser(Admin admin) {
-	        System.out.print("Enter user ID to modify: ");
+	    	userservice.listUsers(admin);
+	        System.out.print("Enter user ID you want to modify: ");
 	        int userId = scanner.nextInt();
 	        scanner.nextLine();
 	        User user = userservice.getUserById(userId);
@@ -115,7 +120,8 @@ public class AdminMain {
 	    }
 
 	    private static void deleteUser(Admin admin) {
-	        System.out.print("Enter user ID to delete: ");
+	    	userservice.listUsers(admin);
+	        System.out.print("Enter user ID you want to delete: ");
 	        int userId = scanner.nextInt();
 	        scanner.nextLine();
 	        userservice.deleteUser(userId, admin);
@@ -124,5 +130,13 @@ public class AdminMain {
 	    private static void listUsers(Admin admin) {
 	        userservice.listUsers(admin);
 	    }
+	    
+	    private static void ViewReports(Admin admin) {
+	        System.out.println("->Reports:");
+	        System.out.println("-Total Users: " + adminservices.getTotalUsers());
+	        System.out.println("-Total Events: " + adminservices.getTotalEvents());
+	        System.out.println("-Total Reservations: " + adminservices.getTotalReservations());
+	    }
+
 	
 }

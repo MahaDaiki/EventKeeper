@@ -42,7 +42,7 @@ public class Events {
 	    
 	    @Override
 	    public String toString() {
-	        return "Event [ID=" + Id + ", Date=" + Date + ", Place=" + Place + ", Type=" + Type + "]";
+	        return "Event -> ID:" + Id + ", Date:" + Date + ", Place:" + Place + ", Type:" + Type + "]";
 	    }
     
     

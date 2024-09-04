@@ -1,10 +1,11 @@
 package Main;
 
 import Models.Admin;
+import Models.Events;
 //import Models.Events;
 import Models.RegularUser;
 //import Models.User;
-//import Services.EventService;
+import Services.EventService;
 import Services.UserService;
 
 import Main.UserMain;
@@ -17,15 +18,16 @@ public class Main {
 	
 			 private static UserService userService = new UserService();
 			 private static Scanner scanner = new Scanner(System.in);
-			 
+			 private static EventService EventService = new EventService();
 			 
 	public static void main(String[] args) {
+		 EventService.addEvent(new Events( "2024-10-01", "Place A", "Type A"), new Admin("Admin", "admin@example.com", "password"));
+	       EventService.addEvent(new Events( "2024-11-01", "Place B", "Type B"), new Admin("Admin", "admin@example.com", "password"));
 		
 		MainMenu();
 //		Admin admin = new Admin("Admin", "admin@email.com" , "password");
 //		RegularUser user1 = new RegularUser("User1", "user1@email.com","password");
 //		RegularUser user2 = new RegularUser("User2", "user2@email.com","password");
-		
 		
 		
 	}

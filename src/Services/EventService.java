@@ -78,20 +78,32 @@ public class EventService implements EventManagement {
 
 	@Override
 	public Events getEventById(int eventId) {
-		return events.stream()
-				.filter(event ->event.getId()== eventId)
-				.findFirst()
-				.orElse(null);
+		 for (int i = 0; i < events.size(); i++) {
+		        Events event = events.get(i);
+		        if (event.getId() == eventId) {
+		            return event;
+		        }
+		    }
+		    return null;
 		
 	}
 
 	@Override
 	public List<Events> searchEvents(String date, String place, String type) {
-	    return events.stream()
-                .filter(event -> (date == null || event.getDate().equals(date)) &&
-                                 (place == null || event.getPlace().equals(place)) &&
-                                 (type == null || event.getType().equals(type)))
-                .collect(Collectors.toList());
+		List<Events> matchedEvents = new ArrayList<>();
+	    for (int i = 0; i < events.size(); i++) {
+	        Events event = events.get(i);
+
+	        boolean matchesDate = (date != null && event.getDate().equals(date));
+	        boolean matchesPlace = (place != null && event.getPlace().equals(place));
+	        boolean matchesType = (type != null && event.getType().equals(type));
+
+	        if (matchesDate || matchesPlace || matchesType) {
+	            matchedEvents.add(event);
+	        }
+	    }
+
+	    return matchedEvents; 
 	}
 	
 

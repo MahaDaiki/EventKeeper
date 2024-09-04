@@ -42,26 +42,37 @@ public class ReservationService implements ReservationManagement {
 
 	@Override
 	public void ReservationByUser(int UserId) {
-		reservations.stream()
-		.filter(res->res.getUserId() == UserId)
-		.forEach(res -> System.out.println("Reservation ID: " + res.getReservationId() + ", Event ID: " + res.getEventId())));
-		
+		for (int i = 0; i < reservations.size(); i++) {
+	        Reservation currentReservation = reservations.get(i);
+	        if (currentReservation.getUserId() == UserId) {
+	            System.out.println("Reservation ID: " + currentReservation.getReservationId() + ", Event ID: " + currentReservation.getEventId());
+	        }
+	    }
 	}
 
 	@Override
 	public void ReservationByEvent(int EventId) {
-		reservations.stream()
-		.filer(res->getEventId() == EventId)
-		.forEach(res ->system.out.println ("Reservation ID: " + res.getReservationId() + ", User ID: " + res.getUserId())));
+		for (int i = 0; i < reservations.size(); i++) {
+	        Reservation currentReservation = reservations.get(i);
+	        if (currentReservation.getEventId() == EventId) {
+	            System.out.println("Reservation ID: " + currentReservation.getReservationId() + ", User ID: " + currentReservation.getUserId());
+	        }
+	    }
 	}
 	
    
 	
 	private Reservation getReservationById(int reservationId) {
-        return reservations.stream()
-            .filter(res -> res.getReservationId() == reservationId)
-            .findFirst()
-            .orElse(null);
+		 for (int i = 0; i < reservations.size(); i++) {
+             Reservation currentReservation = reservations.get(i);
+             if (currentReservation.getReservationId() == reservationId) {
+           
+           return currentReservation;
+       }
+   }
+   
+      return null;
     }
-
+	
+	
 }

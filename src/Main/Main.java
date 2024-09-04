@@ -68,7 +68,7 @@ public class Main {
 	}
 	
 	public static void RegularUserMenu(RegularUser user) {
-		System.out.println("Hello" + user.getName() + "Welcome!!");
+		System.out.println("Hello " + user.getName() + " Welcome !!");
 	}
 	
 	public static void Admin() {
@@ -83,7 +83,7 @@ public class Main {
 	}
 	
 	public static void AdminMenu(Admin admin) {
-		System.out.println("Welcome" + admin.getName() + "!" );
+		System.out.println("Welcome " + admin.getName() + " !" );
 	}
 	
 }

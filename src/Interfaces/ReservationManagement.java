@@ -3,6 +3,7 @@ package Interfaces;
 import Models.Reservation;
 import Models.User;
 
+
 public interface ReservationManagement {
 	
 	void AddReservation (int UserId, int EventId);
